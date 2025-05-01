@@ -6,13 +6,13 @@
     <title>عرض الأعضاء</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط عصري */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            background-image: url(https://files.catbox.moe/k0axnc.jpg); /* تعيين صورة الخلفية */
-            background-size: cover; /* لجعل الصورة تغطي كامل الخلفية */
-            background-repeat: no-repeat; /* لمنع تكرار الصورة */
-            background-attachment: fixed; /* لجعل الخلفية ثابتة عند التمرير */
+            background-image: url(https://files.catbox.moe/k0axnc.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -20,40 +20,42 @@
             min-height: 100vh;
             direction: rtl;
             box-sizing: border-box;
-            color: #333; /* إعادة لون النص الافتراضي */
+            color: #333;
         }
 
         .members-section {
-            background: rgba(255, 255, 255, 0.8); /* خلفية بيضاء شفافة قليلاً (تم تعديل الشفافية) */
-            border-radius: 15px; /* حواف أكثر استدارة */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* ظل أكثر بروزًا */
-            padding: 40px; /* حشو أكبر */
-            width: 500px; /* عرض أكبر */
+            background: rgba(255, 255, 255, 0.6); /* تدرج أبيض خفيف */
+            border-radius: 12px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            width: 480px;
             max-width: 95%;
             text-align: center;
         }
 
         .members-section h2 {
-            color: #4a148c; /* لون بنفسجي داكن */
-            margin-bottom: 30px;
-            font-size: 2.5em; /* حجم خط أكبر للعنوان */
-            text-shadow: 1px 1px #ddd; /* ظل خفيف للعنوان */
+            display: none; /* إخفاء العنوان */
+            color: #4a148c;
+            margin-bottom: 18px;
+            font-size: 2em;
+            text-shadow: 1px 1px #ddd;
         }
 
         .member-list {
             list-style: none;
             padding: 0;
+            margin: 0; /* إزالة الهامش الخارجي للقائمة */
         }
 
         .member-list li {
-            padding: 15px 0; /* تباعد رأسي أكبر */
-            border-bottom: 1px solid #eee;
-            font-size: 1.1em; /* حجم خط أكبر للأسماء */
+            padding: 8px 0; /* تقليل الهامش الداخلي للعناصر */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* خط فاصل أبيض خفيف */
+            font-size: 1em;
             color: #333;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* توزيع العناصر على السطر */
-            transition: background-color 0.3s ease; /* تأثير عند التhover */
+            justify-content: space-between;
+            transition: background-color 0.3s ease;
         }
 
         .member-list li:last-child {
@@ -61,7 +63,7 @@
         }
 
         .member-list li:hover {
-            background-color: #f9f9f9; /* لون خلفية عند التhover */
+            background-color: rgba(255, 255, 255, 0.2); /* تHover خفيف */
         }
 
        .member-info {
@@ -70,98 +72,99 @@
         }
 
        .member-icon {
-            width: 40px; /* عرض أكبر للصور */
-            height: 40px; /* ارتفاع أكبر للصور */
+            width: 30px; /* تقليل حجم الأيقونة قليلاً */
+            height: 30px; /* تقليل حجم الأيقونة قليلاً */
             border-radius: 50%;
-            margin-left: 15px; /* مسافة بين الصورة والاسم */
+            margin-left: 10px; /* تقليل الهامش قليلاً */
             object-fit: cover;
-            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* ظل خفيف للصور */
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .social-icons {
             display: flex;
-            align-items: center; /* محاذاة العناصر عموديا */
+            align-items: center;
         }
 
         .social-icon {
-            margin-right: 8px;
-            font-size: 1.2em;
+            margin-right: 4px; /* تقليل الهامش قليلاً */
+            font-size: 1em; /* تقليل حجم الأيقونة قليلاً */
             transition: color 0.3s ease;
-            text-decoration: none; /* إزالة الخط الافتراضي للروابط */
+            text-decoration: none;
         }
 
         .social-icon:hover {
-            opacity: 0.8; /* تقليل الشفافية عند التhover */
+            opacity: 0.8;
         }
 
         .social-icon.instagram {
-            color: #e4405f; /* لون انستغرام */
+            color: #e4405f;
         }
 
         .social-icon.telegram {
-            color: #229ED9; /* لون تليجرام */
+            color: #229ED9;
         }
 
         .member-stage {
-            margin-right: 10px; /* مسافة بين "مرحلة ثانية" والأيقونات */
-            font-size: 0.9em;
+            margin-right: 4px; /* تقليل الهامش قليلاً */
+            font-size: 0.8em; /* تقليل حجم الخط قليلاً */
             color: #777;
             display: flex;
-            align-items: center; /* محاذاة عمودية للأيقونة والنص */
+            align-items: center;
         }
 
         .stage-icon {
-            margin-left: 5px; /* مسافة بين النص والأيقونة */
-            font-size: 1em; /* حجم الأيقونة */
-            color: #5cb85c; /* لون أخضر للدلالة على المرحلة */
+            margin-left: 3px; /* تقليل الهامش قليلاً */
+            font-size: 0.9em; /* تقليل حجم الأيقونة قليلاً */
+            color: #5cb85c;
         }
 
         .birth-year {
-            font-size: 0.8em; /* حجم خط أصغر لسنة الميلاد */
-            color: #888; /* لون رمادي لسنة الميلاد */
-            margin-right: 5px; /* مسافة بين الاسم وسنة الميلاد */
+            display: none; /* إخفاء قسم سنة الميلاد */
+            font-size: 0.8em;
+            color: #888;
+            margin-right: 4px;
         }
 
         .members-section p.note {
             color: #777;
-            font-size: 0.9em;
-            margin-top: 30px;
-            font-style: italic; /* خط مائل للملاحظة */
-            margin-bottom: 20px; /* إضافة مساحة للزر */
+            font-size: 0.8em; /* تقليل حجم الخط قليلاً */
+            margin-top: 15px; /* تقليل الهامش قليلاً */
+            font-style: italic;
+            margin-bottom: 10px; /* تقليل الهامش قليلاً */
         }
 
         .university-link {
             display: inline-block;
-            background-color: #1e88e5; /* لون أزرق أفتح للجامعة */
+            background-color: rgba(30, 136, 229, 0.8); /* لون أزرق مع شفافية */
             color: white;
-            padding: 10px 20px;
+            padding: 8px 12px; /* تقليل الهامش قليلاً */
             text-align: center;
             text-decoration: none;
-            font-size: 1em;
+            font-size: 0.9em; /* تقليل حجم الخط قليلاً */
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
         }
 
         .university-link:hover {
-            background-color: #1565c0; /* لون أزرق أغمق عند التhover */
+            background-color: rgba(21, 101, 192, 0.8); /* لون أزرق أغمق مع شفافية */
         }
 
         .university-icon {
-            margin-right: 8px;
-            font-size: 1.2em;
+            margin-right: 5px; /* تقليل الهامش قليلاً */
+            font-size: 1em; /* تقليل حجم الأيقونة قليلاً */
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="members-section">
-        <h2>أعضاء المجموعة</h2>
+        <h2 style="display: none;">الأعضاء</h2>
         <ul class="member-list">
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/p1947c.jpg" alt="صورة سالم" class="member-icon">
-                    سالم صلاح <span class="birth-year">(2002)</span>
+                    سالم صلاح
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -172,7 +175,7 @@
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/m1jhym.jpg" alt="صورة علي" class="member-icon">
-                    علي حسين <span class="birth-year">(2003)</span>
+                    علي حسين
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -183,7 +186,7 @@
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/e3j0k1.jpg" alt="صورة ضرغام" class="member-icon">
-                    ضرغام خالد <span class="birth-year">(2005)</span>
+                    ضرغام خالد
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -194,7 +197,7 @@
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/8f8uwz.jpg" alt="صورة علي محسن" class="member-icon">
-                    علي محسن <span class="birth-year">(2002)</span>
+                    علي محسن
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -205,7 +208,7 @@
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/7v0csn.jpg" alt="صورة حسين" class="member-icon">
-                    حسين كاظم <span class="birth-year">(2004)</span>
+                    حسين كاظم
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -216,7 +219,7 @@
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/xyy665.jpg" alt="صورة محسن" class="member-icon">
-                    محسن ضمير <span class="birth-year">(2005)</span>
+                    محسن ضمير
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -227,7 +230,7 @@
             <li>
                 <div class="member-info">
                     <img src="https://files.catbox.moe/cx8nmd.jpg" alt="صورة حسن" class="member-icon">
-                    حسن سعد <span class="birth-year">(2005)</span>
+                    حسن سعد
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
@@ -237,58 +240,62 @@
             </li>
             <li>
                 <div class="member-info">
-                    <img src="https://files.catbox.moe/uw4rj1.jpg" alt="صورة رضا" class="member-icon">
-                    رضا غني <span class="birth-year">(2003)</span>
+                    <img src="https://files.catbox.moe/689cp4.jpg" alt="صورة علي نزار" class="member-icon">
+                    علي نزار
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
-                    <a href="https://www.instagram.com/23_p3y?igsh=MThrY3JrODIyaTc0dg==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/Re77tt" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://www.instagram.com/a.m1.nz?igsh=MWxzaWliZ2JwMm9ucA==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="@Alinazar23" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </li>
             <li>
                 <div class="member-info">
-                    <img src="https://files.catbox.moe/sxw351.jpg" alt="صورة حسن ستار" class="member-icon">
-                    حسن ستار <span class="birth-year">(2000)</span>
+                    <img src="https://files.catbox.moe/2mdqoc.jpg" alt="صورة علي عبادي" class="member-icon">
+                    علي عبادي
                 </div>
                 <div class="social-icons">
                     <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
-                    <a href="https://www.instagram.com/hz.pn?igsh=NndvcHBobnk1dXBm" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://www.instagram.com/650a1?igsh=Z2UyanA0Z2t2MWNj" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                     <a href="@Ali_14_h" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </li>
-        </ul>
-        <button id="shuffleButton">تبديل ترتيب الأعضاء</button>
-        <p class="note">قائمة بأسماء وصور ومواليد أعضاء المجموعة.</p>
-        <a href="https://cois.uokerbala.edu.iq/wp/" target="_blank" class="university-link">
-            <i class="fas fa-book-open university-icon"></i>
-            كلية العلوم الإسلامية
-        </a>
-    </div>
-
-    <script>
-        const memberList = document.querySelector('.member-list');
-        const shuffleButton = document.getElementById('shuffleButton');
-        const listItems = Array.from(memberList.children); // تحويل عناصر القائمة إلى مصفوفة
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // تبديل العناصر
-            }
-        }
-
-        shuffleButton.addEventListener('click', () => {
-            shuffleArray(listItems); // خلط ترتيب المصفوفة
-
-            // إزالة جميع العناصر الحالية من القائمة
-            memberList.innerHTML = '';
-
-            // إضافة العناصر بترتيبها الجديد
-            listItems.forEach(item => {
-                memberList.appendChild(item);
-            });
-        });
-    </script>
-</body>
-</html>
+            <li>
+                <div class="member-info">
+                    <img src="https://files.catbox.moe/wehnbs.jpg" alt="صورة عباس رزاق" class="member-icon">
+                    عباس رزاق
+                </div>
+                <div class="social-icons">
+                    <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
+                    <a href="https://www.instagram.com/8cs.6?igsh=bXEwazR6MjVtcGl6" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="@abb_s16" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </li>
+            <li>
+                <div class="member-info">
+                    <img src="" alt="صورة علي كاظم" class="member-icon">
+                    علي كاظم
+                </div>
+                <div class="social-icons">
+                    <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
+                    <a href="#" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </li>
+            <li>
+                <div class="member-info">
+                    <img src="https://files.catbox.moe/mr5f7z.jpg" alt="صورة حسين غالي" class="member-icon">
+                    حسين غالي
+                </div>
+                <div class="social-icons">
+                    <span class="member-stage">مرحلة ثانية <i class="fas fa-graduation-cap stage-icon"></i></span>
+                    <a href="https://www.instagram.com/h8u_s?igsh=MWc1cmRmczRjbDdlcQ==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="@hu_ss_3" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </li>
+            <li>
+                <div class="member-info">
+                    <img src="https://files.catbox.moe/ukl27e.jpg" alt="صورة محمد جبار" class="member-icon">
+                    محمد جبار
+                </div>
+                <div class
